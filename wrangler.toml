@@ -1,0 +1,6 @@
+# Cloudflare Pages configuration for sams-portfolio-site
+# Build command: npm run build
+# Output directory: dist
+name = "sams-portfolio-site"
+compatibility_date = "2026-11-15"
+pages_build_output_dir = "./dist"
