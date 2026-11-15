@@ -2,6 +2,7 @@ name: Deploy to GitHub Pages
 
 # Builds the world and publishes it to GitHub Pages on every push to main.
 # The site lives at https://borohuz1.github.io/sams-portfolio-site/
+# It publishes the build to a gh-pages branch; Pages serves that branch.
 
 on:
   push:
@@ -9,17 +10,10 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# One deployment at a time, and a new one cancels an old one.
-concurrency:
-  group: pages
-  cancel-in-progress: true
+  contents: write
 
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,6 +28,9 @@ jobs:
 
       - name: Install
         run: npm ci
+        env:
+          # package-lock.json is committed; keep the install deterministic.
+          CI: 'true'
 
       - name: Build
         run: npm run build
@@ -45,20 +42,13 @@ jobs:
           VITE_MUSIC: '1'
           VITE_LOG: '1'
 
-      - name: Upload the build
-        uses: actions/upload-pages-artifact@v3
+      - name: Publish to the gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./dist
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: '41898282+github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Deploy ${{ github.sha }}'
