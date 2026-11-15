@@ -1,0 +1,33 @@
+.DS_Store
+node_modules
+dist
+.vercel
+.VSCodeCounter
+.env
+.env.local
+.env.*.local
+.autosave
+.wav
+!static/sounds/music/*.wav
+
+# Pristine world model backups, ~3 MB each. They are only needed to re-run
+# scripts/patch-areas.mjs. Restore one from
+# https://github.com/brunosimon/folio-2025 if you need it again.
+static/areas/areas.glb.bak
+resources/areas-original.glb
+
+# Scratch files from the build work. Not part of the site.
+areas-dump.json
+build.log
+devserver.log
+generate.log
+fonttest*.png
+sharp-test.png
+scripts/_careerpx*.mjs
+scripts/_check.mjs
+scripts/_dims*.mjs
+scripts/_fonttest*.mjs
+scripts/_icons.mjs
+scripts/_sharp-test.mjs
+scripts/_summ.mjs
+scripts/_tree.mjs

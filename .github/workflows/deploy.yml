@@ -1,0 +1,64 @@
+name: Deploy to GitHub Pages
+
+# Builds the world and publishes it to GitHub Pages on every push to main.
+# The site lives at https://borohuz1.github.io/drivable-portfolio/
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time, and a new one cancels an old one.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          # The site ships uncompressed assets on purpose. Never set
+          # VITE_COMPRESSED here unless the -compressed.glb models and the
+          # .ktx textures have been regenerated. See README.md.
+          VITE_COMPRESSED: ''
+          VITE_MUSIC: '1'
+          VITE_LOG: '1'
+
+      - name: Upload the build
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
