@@ -62,7 +62,30 @@ const NODES_TO_REMOVE = new Set([
     'boyMesh',
     'sudoPhysicalDynamic',
     'sudoMesh.003',
-    'wings'
+    'wings',
+
+    // The giant "BRUNO SIMON" ground letters spelled out in front of the
+    // landing area. They are the most visible part of his identity.
+    'refLettersPhysicalDynamic.010',
+    'refLettersPhysicalDynamic.011',
+    'refLettersPhysicalDynamic.012',
+    'refLettersPhysicalDynamic.013',
+    'refLettersPhysicalDynamic.014',
+    'refLettersPhysicalDynamic.015',
+    'refLettersPhysicalDynamic.016',
+    'refLettersPhysicalDynamic.017',
+    'refLettersPhysicalDynamic.018',
+    'refLettersPhysicalDynamic.019',
+    'cuboid.222',
+    'cuboid.223',
+    'cuboid.224',
+    'cuboid.225',
+    'cuboid.226',
+    'cuboid.227',
+    'cuboid.228',
+    'cuboid.229',
+    'cuboid.230',
+    'cuboid.231'
 ])
 
 /** Nodes that must survive the patch. The script fails if any of them goes. */

@@ -23,18 +23,43 @@ export class LandingArea extends Area
 
     setLetters()
     {
-        const references = this.references.items.get('letters')
+        // The original giant 3D "BRUNO SIMON" letters have been removed. In
+        // their place, a painted "SAMS" decal keeps the landing area readable
+        // straight from the spawn camera without using the original artist's
+        // name.
+        const canvas = document.createElement('canvas')
+        canvas.width = 1024
+        canvas.height = 512
+        const ctx = canvas.getContext('2d')
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.fillStyle = '#ffffff'
+        ctx.font = '900 230px Impact, Haettenschweiler, Arial Black, sans-serif'
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'middle'
+        ctx.shadowColor = 'rgba(0,0,0,0.35)'
+        ctx.shadowBlur = 18
+        ctx.fillText('SAMS', canvas.width * 0.5, canvas.height * 0.5)
 
-        for(const reference of references)
-        {
-            const physical = reference.userData.object.physical
-            physical.colliders[0].setActiveEvents(this.game.RAPIER.ActiveEvents.CONTACT_FORCE_EVENTS)
-            physical.colliders[0].setContactForceEventThreshold(5)
-            physical.onCollision = (force, position) =>
-            {
-                this.game.audio.groups.get('hitBrick').playRandomNext(force, position)
-            }
-        }
+        const texture = new THREE.CanvasTexture(canvas)
+        texture.colorSpace = THREE.SRGBColorSpace
+        texture.anisotropy = 4
+
+        const geometry = new THREE.PlaneGeometry(12, 6)
+        const material = new THREE.MeshStandardMaterial({
+            map: texture,
+            transparent: true,
+            roughness: 1,
+            metalness: 0,
+            polygonOffset: true,
+            polygonOffsetFactor: -2,
+            polygonOffsetUnits: -8
+        })
+
+        const decal = new THREE.Mesh(geometry, material)
+        decal.rotation.order = 'YXZ'
+        decal.rotation.set(-Math.PI * 0.5, 2.7, 0)
+        decal.position.set(-5.2, 0.03, 3.09)
+        this.game.scene.add(decal)
     }
 
     setKiosk()
