@@ -114,7 +114,11 @@ export class Reveal
                     // Input callback
                     const inputCallback = () =>
                     {
-                        next()
+                        // On touch devices, allow a direct tap anywhere on the canvas to enter.
+                        if(this.game.inputs.mode === this.game.inputs.constructor.MODE_TOUCH)
+                            next()
+                        else if(this.game.inputs.mode !== this.game.inputs.constructor.MODE_MOUSEKEYBOARD)
+                            next()
                     }
 
                     // Intsect
@@ -137,7 +141,7 @@ export class Reveal
                     
                     // Inputs (for gamepad and keyboard)
                     this.game.inputs.addActions([
-                        { name: 'introStart', categories: [ 'intro' ], keys: [ 'Gamepad.cross', 'Keyboard.Enter', 'Keyboard.ArrowUp', 'Keyboard.ArrowDown', 'Keyboard.KeyW', 'Keyboard.KeyD' ] },
+                        { name: 'introStart', categories: [ 'intro' ], keys: [ 'Gamepad.cross', 'Keyboard.Enter', 'Keyboard.ArrowUp', 'Keyboard.ArrowDown', 'Keyboard.KeyW', 'Keyboard.KeyD', 'Pointer.any' ] },
                     ])
 
             // { name: 'forward',               categories: [ 'wandering', 'racing', 'cinematic' ], keys: [ 'Keyboard.ArrowUp', 'Keyboard.KeyW', 'Gamepad.up', 'Gamepad.r2' ] },
