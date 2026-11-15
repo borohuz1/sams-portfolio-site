@@ -114,11 +114,8 @@ export class Reveal
                     // Input callback
                     const inputCallback = () =>
                     {
-                        // On touch devices, allow a direct tap anywhere on the canvas to enter.
-                        if(this.game.inputs.mode === this.game.inputs.constructor.MODE_TOUCH)
-                            next()
-                        else if(this.game.inputs.mode !== this.game.inputs.constructor.MODE_MOUSEKEYBOARD)
-                            next()
+                        // Allow touch, keyboard, and gamepad input to enter the portfolio.
+                        next()
                     }
 
                     // Intsect
