@@ -68,6 +68,16 @@
 </head>
 <body>
 
+    <!-- Fallback for browsers without WebGPU -->
+    <script>
+        (function () {
+            var supported = typeof navigator !== 'undefined' && !!navigator.gpu;
+            if (!supported) {
+                window.location.replace('./lite.html');
+            }
+        })();
+    </script>
+
     <div class="js-fonts-loader fonts-loader">
         <div class="font nunito" data-font="400 20px Nunito">Â </div>
         <div class="font amatic-sc" data-font="700 20px 'Amatic SC'">Â </div>

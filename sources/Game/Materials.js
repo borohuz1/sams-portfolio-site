@@ -30,7 +30,7 @@ export class Materials
         this.createEmissiveGradient('emissiveGreenRadialGradient', '#f8ffa6', '#74ff00', 1.5, true, this.debugPanel?.addFolder({ title: 'emissiveGreenRadialGradient' }))
         this.createEmissiveGradient('emissiveWhiteRadialGradient', '#ffffff', '#666666', 2.7, false, this.debugPanel?.addFolder({ title: 'emissiveWhiteRadialGradient' }))
         
-        this.createGradient('redGradient', '#ff3a3a', '#721551', this.debugPanel?.addFolder({ title: 'redGradient' }))
+        this.createGradient('redGradient', '#8b0000', '#ff9d00', this.debugPanel?.addFolder({ title: 'redGradient' }))
     }
 
     createPalette()
@@ -57,9 +57,9 @@ export class Materials
         const context = canvas.getContext('2d')
 
         const colors = [
-            { stop: 0, value: '#ffb646' },
-            { stop: 0.5, value: '#ff347e' },
-            { stop: 1, value: '#01005f' },
+            { stop: 0, value: '#ffd16b' },
+            { stop: 0.5, value: '#dc3c38' },
+            { stop: 1, value: '#1b1226' },
         ]
 
         const update = () =>

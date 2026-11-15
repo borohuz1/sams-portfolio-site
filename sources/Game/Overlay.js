@@ -12,8 +12,8 @@ export class Overlay
         this.setSounds()
 
         // Uniforms
-        const colorA = uniform(color('#251f2b'))
-        const colorB = uniform(color('#1d1721'))
+        const colorA = uniform(color('#3d1d1d'))
+        const colorB = uniform(color('#251010'))
         this.progress = uniform(0)
         this.patternSize = uniform(200 * this.game.viewport.pixelRatio)
         this.strokeSize = uniform(10)
