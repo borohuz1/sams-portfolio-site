@@ -1,7 +1,7 @@
 name: Deploy to GitHub Pages
 
 # Builds the world and publishes it to GitHub Pages on every push to main.
-# The site lives at https://borohuz1.github.io/drivable-portfolio/
+# The site lives at https://borohuz1.github.io/sams-portfolio-site/
 
 on:
   push:

@@ -142,7 +142,7 @@ export default {
     },
 
     /** Where this site will live once published */
-    siteUrl: 'https://borohuz1.github.io/drivable-portfolio/',
+    siteUrl: 'https://borohuz1.github.io/sams-portfolio-site/',
 
     /**
      * Behind the scene panel.
