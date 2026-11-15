@@ -40,7 +40,9 @@ export class Rendering
         this.renderer = new THREE.WebGPURenderer({
             canvas: this.game.canvasElement,
             powerPreference: 'high-performance',
-            forceWebGL: false,
+            // Use the WebGL backend for broader browser/GPU compatibility.
+            // Avoids the WebGPU drawIndexed validation crash seen on some devices.
+            forceWebGL: true,
             antialias: this.game.viewport.pixelRatio < 2
         })
         this.renderer.setSize(this.game.viewport.width, this.game.viewport.height)
