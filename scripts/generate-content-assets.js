@@ -172,7 +172,7 @@ async function generateCareerLabel(zone)
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${plate.width}" height="${plate.height}">${parts.join('')}</svg>`
 
     const out = path.join(STATIC, 'career', `${zone.texture}.png`)
-    await sharp(Buffer.from(svg)).png().toFile(out)
+    await sharp(Buffer.from(svg)).flip().png().toFile(out)
     console.log(`  career/${zone.texture}.png (${plate.width}x${plate.height})`)
 }
 
@@ -280,7 +280,7 @@ async function generateProjectImage(project, index, imageIndex)
 
     const file = project.images[imageIndex]
     const out = path.join(STATIC, 'projects', 'images', file)
-    await sharp(Buffer.from(svg)).png().toFile(out)
+    await sharp(Buffer.from(svg)).flip().png().toFile(out)
     console.log(`  projects/images/${file}`)
 }
 
@@ -301,7 +301,7 @@ async function generateLabImage(item, index, mini)
 
     const file = mini ? item.imageMini : item.image
     const out = path.join(STATIC, 'lab', 'images', file)
-    await sharp(Buffer.from(svg)).png().toFile(out)
+    await sharp(Buffer.from(svg)).flip().png().toFile(out)
     console.log(`  lab/images/${file}`)
 }
 
