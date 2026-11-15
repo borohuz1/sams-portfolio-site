@@ -23,10 +23,8 @@ export class LandingArea extends Area
 
     setLetters()
     {
-        // The original giant 3D "BRUNO SIMON" letters have been removed. In
-        // their place, a painted "SAMS" decal keeps the landing area readable
-        // straight from the spawn camera without using the original artist's
-        // name.
+        // The giant 3D ground title has been removed so the landing area
+        // shows the name of this portfolio's owner, not the starter author's.
         const canvas = document.createElement('canvas')
         canvas.width = 1024
         canvas.height = 512
@@ -44,21 +42,20 @@ export class LandingArea extends Area
         texture.colorSpace = THREE.SRGBColorSpace
         texture.anisotropy = 4
 
-        const geometry = new THREE.PlaneGeometry(12, 6)
-        const material = new THREE.MeshStandardMaterial({
+        const geometry = new THREE.PlaneGeometry(16, 8)
+        const material = new THREE.MeshBasicMaterial({
             map: texture,
             transparent: true,
-            roughness: 1,
-            metalness: 0,
-            polygonOffset: true,
-            polygonOffsetFactor: -2,
-            polygonOffsetUnits: -8
+            side: THREE.DoubleSide,
+            depthTest: false,
+            toneMapped: false
         })
 
         const decal = new THREE.Mesh(geometry, material)
         decal.rotation.order = 'YXZ'
         decal.rotation.set(-Math.PI * 0.5, 2.7, 0)
-        decal.position.set(-5.2, 0.03, 3.09)
+        decal.position.set(-5.2, 1.2, 3.09)
+        decal.renderOrder = 9999
         this.game.scene.add(decal)
     }
 

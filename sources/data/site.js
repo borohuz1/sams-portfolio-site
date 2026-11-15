@@ -182,13 +182,10 @@ export default {
             {
                 title: 'Source code',
                 html:
-                    'The code is on <a href="https://github.com/sams-shahriar/drivable-portfolio" ' +
+                    'The code is on <a href="https://github.com/borohuz1/sams-portfolio-site" ' +
                     'target="_blank" rel="noreferrer">GitHub</a> under an ' +
                     '<a href="https://choosealicense.com/licenses/mit/" target="_blank" rel="noreferrer">MIT license</a>.' +
-                    '<br />This project started from the MIT-licensed ' +
-                    '<a href="https://github.com/brunosimon/folio-2025" target="_blank" rel="noreferrer">' +
-                    'folio-2025</a> by Bruno Simon, who made the original drivable portfolio. All credit ' +
-                    'for the world, the car and the engine goes to him and the Three.js community.'
+                    '<br />Built with the MIT-licensed folio-2025 starter. Full attribution in NOTICE.md.'
             },
             {
                 title: 'Musics',
