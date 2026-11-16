@@ -205,6 +205,32 @@ export class Intro
 
         this.label.add(mesh)
 
+        // Personal welcome title above the original control instructions.
+        const welcomeCanvas = document.createElement('canvas')
+        welcomeCanvas.width = 1024
+        welcomeCanvas.height = 256
+        const welcomeContext = welcomeCanvas.getContext('2d')
+        welcomeContext.clearRect(0, 0, welcomeCanvas.width, welcomeCanvas.height)
+        welcomeContext.textAlign = 'center'
+        welcomeContext.textBaseline = 'middle'
+        welcomeContext.font = '600 76px Arial'
+        welcomeContext.fillStyle = '#ffffff'
+        welcomeContext.shadowColor = 'rgba(0,0,0,0.7)'
+        welcomeContext.shadowBlur = 18
+        welcomeContext.fillText('MOHAMMAD SAMS SHAHRIAR', 512, 105)
+        welcomeContext.font = '32px Arial'
+        welcomeContext.fillStyle = '#d8e5ff'
+        welcomeContext.fillText('WELCOME TO MY WORLD', 512, 190)
+        const welcomeTexture = new THREE.CanvasTexture(welcomeCanvas)
+        welcomeTexture.colorSpace = THREE.SRGBColorSpace
+        const welcomeMaterial = new THREE.MeshBasicMaterial({ map: welcomeTexture, transparent: true, depthWrite: false })
+        const welcomeMesh = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 0.85), welcomeMaterial)
+        welcomeMesh.position.y = 1.05
+        this.label.add(welcomeMesh)
+        this.text.welcomeMesh = welcomeMesh
+        this.text.welcomeTexture = welcomeTexture
+        this.text.welcomeMaterial = welcomeMaterial
+
         this.text.mesh = mesh
     }
 
@@ -330,6 +356,9 @@ export class Intro
         this.circle.mesh.geometry.dispose()
         this.soundButton.mesh.geometry.dispose()
         this.text.mesh.geometry.dispose()
+        this.text.welcomeMesh.geometry.dispose()
+        this.text.welcomeMaterial.dispose()
+        this.text.welcomeTexture.dispose()
 
         // Materials
         this.circle.mesh.material.dispose()
