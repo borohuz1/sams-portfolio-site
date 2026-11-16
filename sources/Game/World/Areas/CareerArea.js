@@ -199,6 +199,7 @@ export class CareerArea extends Area
             THREE.NearestFilter,
             THREE.NearestFilter
         )
+        this.year.digitsTexture.flipY = true
         this.year.digitsTexture.generateMipmaps = false
         this.year.digitsTexture.needsUpdate = true
 
