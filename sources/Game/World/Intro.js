@@ -15,6 +15,7 @@ export class Intro
 
         this.setCircle()
         this.setLabel()
+        this.setGroundName()
 
         this.update = this.update.bind(this)
         this.game.ticker.events.on('tick', this.update, 8)
@@ -46,6 +47,53 @@ export class Intro
         
         this.label.scale.setScalar(0.01)
         this.game.scene.add(this.label)
+    }
+
+    setGroundName()
+    {
+        // Large, flat ground lettering inspired by the original Bruno Simon world.
+        const canvas = document.createElement('canvas')
+        canvas.width = 2048
+        canvas.height = 320
+        const context = canvas.getContext('2d')
+        context.clearRect(0, 0, canvas.width, canvas.height)
+        context.textAlign = 'center'
+        context.textBaseline = 'middle'
+        context.font = '900 170px Arial'
+        context.lineJoin = 'round'
+        context.lineWidth = 22
+        context.strokeStyle = 'rgba(20, 25, 35, 0.82)'
+        context.strokeText('MOHAMMAD SAMS SHAHRIAR', 1024, 160)
+        context.fillStyle = '#f7f4ec'
+        context.shadowColor = 'rgba(0, 0, 0, 0.35)'
+        context.shadowBlur = 12
+        context.fillText('MOHAMMAD SAMS SHAHRIAR', 1024, 160)
+
+        const texture = new THREE.CanvasTexture(canvas)
+        texture.colorSpace = THREE.SRGBColorSpace
+        texture.anisotropy = this.game.rendering.renderer.capabilities.getMaxAnisotropy()
+        const material = new THREE.MeshBasicMaterial({
+            map: texture,
+            transparent: true,
+            depthWrite: false,
+            polygonOffset: true,
+            polygonOffsetFactor: -2
+        })
+        const geometry = new THREE.PlaneGeometry(9.5, 1.5)
+        const mesh = new THREE.Mesh(geometry, material)
+        mesh.rotation.x = -Math.PI * 0.5
+        mesh.rotation.z = this.game.respawns.getDefault().rotation
+        const heading = this.game.respawns.getDefault().rotation
+        const distance = 5.2
+        mesh.position.set(
+            this.center.x + Math.sin(heading) * distance,
+            0.035,
+            this.center.z + Math.cos(heading) * distance
+        )
+        mesh.renderOrder = 2
+        mesh.frustumCulled = false
+        this.game.scene.add(mesh)
+        this.groundName = { mesh, geometry, material, texture }
     }
 
     setCircle()
@@ -205,32 +253,6 @@ export class Intro
 
         this.label.add(mesh)
 
-        // Personal welcome title above the original control instructions.
-        const welcomeCanvas = document.createElement('canvas')
-        welcomeCanvas.width = 1024
-        welcomeCanvas.height = 256
-        const welcomeContext = welcomeCanvas.getContext('2d')
-        welcomeContext.clearRect(0, 0, welcomeCanvas.width, welcomeCanvas.height)
-        welcomeContext.textAlign = 'center'
-        welcomeContext.textBaseline = 'middle'
-        welcomeContext.font = '600 76px Arial'
-        welcomeContext.fillStyle = '#ffffff'
-        welcomeContext.shadowColor = 'rgba(0,0,0,0.7)'
-        welcomeContext.shadowBlur = 18
-        welcomeContext.fillText('MOHAMMAD SAMS SHAHRIAR', 512, 105)
-        welcomeContext.font = '32px Arial'
-        welcomeContext.fillStyle = '#d8e5ff'
-        welcomeContext.fillText('WELCOME TO MY WORLD', 512, 190)
-        const welcomeTexture = new THREE.CanvasTexture(welcomeCanvas)
-        welcomeTexture.colorSpace = THREE.SRGBColorSpace
-        const welcomeMaterial = new THREE.MeshBasicMaterial({ map: welcomeTexture, transparent: true, depthWrite: false })
-        const welcomeMesh = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 0.85), welcomeMaterial)
-        welcomeMesh.position.y = 1.05
-        this.label.add(welcomeMesh)
-        this.text.welcomeMesh = welcomeMesh
-        this.text.welcomeTexture = welcomeTexture
-        this.text.welcomeMaterial = welcomeMaterial
-
         this.text.mesh = mesh
     }
 
@@ -351,14 +373,15 @@ export class Intro
     destroy()
     {
         this.label.removeFromParent()
+        this.groundName.mesh.removeFromParent()
+        this.groundName.geometry.dispose()
+        this.groundName.material.dispose()
+        this.groundName.texture.dispose()
 
         // Geometries
         this.circle.mesh.geometry.dispose()
         this.soundButton.mesh.geometry.dispose()
         this.text.mesh.geometry.dispose()
-        this.text.welcomeMesh.geometry.dispose()
-        this.text.welcomeMaterial.dispose()
-        this.text.welcomeTexture.dispose()
 
         // Materials
         this.circle.mesh.material.dispose()
