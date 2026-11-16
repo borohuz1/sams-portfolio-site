@@ -1,4 +1,4 @@
-# Credits and notices
+﻿# Credits and notices
 
 This project is a fork of
 **[folio-2025](https://github.com/brunosimon/folio-2025)** by **Bruno Simon**,
@@ -42,3 +42,7 @@ The music in `static/sounds/musics/` was made for the original portfolio by
 **Kounine** (<https://linktr.ee/Kounine>) and is published under the
 [CC0 license](https://choosealicense.com/licenses/cc0-1.0/), so it can be used
 however you like.
+
+## Vehicle
+
+Sports Car by Grab3D — CC0 1.0 (public domain). Used as the default vehicle body. https://grab3d.com/models/vehicles/sports-car/
