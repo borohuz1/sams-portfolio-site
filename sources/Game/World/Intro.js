@@ -78,7 +78,7 @@ export class Intro
 
         const texture = new THREE.CanvasTexture(canvas)
         texture.colorSpace = THREE.SRGBColorSpace
-        texture.anisotropy = this.game.rendering.renderer.capabilities.getMaxAnisotropy()
+        // Keep the canvas texture on the renderer's portable default anisotropy.
         const material = new THREE.MeshBasicMaterial({
             map: texture,
             transparent: true,
