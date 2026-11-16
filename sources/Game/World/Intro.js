@@ -59,15 +59,22 @@ export class Intro
         context.clearRect(0, 0, canvas.width, canvas.height)
         context.textAlign = 'center'
         context.textBaseline = 'middle'
-        context.font = '900 170px Arial'
+        const fullName = 'MOHAMMAD SAMS SHAHRIAR'
+        let fontSize = 170
+        context.font = `900 ${fontSize}px Arial`
+        while(context.measureText(fullName).width > canvas.width - 120 && fontSize > 60)
+        {
+            fontSize -= 4
+            context.font = `900 ${fontSize}px Arial`
+        }
         context.lineJoin = 'round'
         context.lineWidth = 22
         context.strokeStyle = 'rgba(20, 25, 35, 0.82)'
-        context.strokeText('MOHAMMAD SAMS SHAHRIAR', 1024, 160)
+        context.strokeText(fullName, 1024, 160)
         context.fillStyle = '#f7f4ec'
         context.shadowColor = 'rgba(0, 0, 0, 0.35)'
         context.shadowBlur = 12
-        context.fillText('MOHAMMAD SAMS SHAHRIAR', 1024, 160)
+        context.fillText(fullName, 1024, 160)
 
         const texture = new THREE.CanvasTexture(canvas)
         texture.colorSpace = THREE.SRGBColorSpace
@@ -81,9 +88,9 @@ export class Intro
         })
         const geometry = new THREE.PlaneGeometry(9.5, 1.5)
         const mesh = new THREE.Mesh(geometry, material)
-        mesh.rotation.x = -Math.PI * 0.5
-        mesh.rotation.z = this.game.respawns.getDefault().rotation
         const heading = this.game.respawns.getDefault().rotation
+        // Keep the lettering flat on the ground and rotate it around the vertical axis.
+        mesh.rotation.set(-Math.PI * 0.5, heading, 0)
         const distance = 5.2
         mesh.position.set(
             this.center.x + Math.sin(heading) * distance,
