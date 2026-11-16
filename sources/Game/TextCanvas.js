@@ -47,7 +47,8 @@ export class TextCanvas
         this.texture.colorSpace = THREE.SRGBColorSpace
         this.texture.minFilter = THREE.NearestFilter
         this.texture.magFilter = THREE.NearestFilter
-        this.texture.flipY = false
+        // Canvas textures need a vertical flip with the WebGL backend.
+        this.texture.flipY = true
         this.texture.generateMipmaps = false
     }
 
