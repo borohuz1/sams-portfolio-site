@@ -77,6 +77,10 @@ wheelContainer.addChild(wheelPainted)
 
 chassis.addChild(wheelContainer)
 vehicle.addChild(chassis)
+// The new model's nose faces +Z, which happens to be reversed relative to
+// the physics model's forward direction. Rotate the parent by 180° so
+// pressing forward (W) moves the car toward the nose.
+vehicle.setRotation([ 0, 1, 0, 0 ])
 scene.addChild(vehicle)
 
 // Delete extra wheel nodes (meshes will be pruned on save)
