@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Experiments shown in the lab area.
  *
  * These are the things I am trying out, not finished products. Statuses are
@@ -14,7 +14,7 @@
 export default [
     {
         title: 'Drivable Portfolio',
-        url: 'https://github.com/sams-shahriar/drivable-portfolio',
+        url: 'https://github.com/borohuz1/sams-portfolio-site',
         image: 'drivable-portfolio.png',
         imageMini: 'drivable-portfolio-mini.png',
         status: 'This site',
@@ -22,7 +22,7 @@ export default [
     },
     {
         title: 'AI Video Tests',
-        url: 'https://github.com/sams-shahriar',
+        url: 'https://github.com/borohuz1',
         image: 'ai-video-tests.png',
         imageMini: 'ai-video-tests-mini.png',
         status: 'In progress',
@@ -30,7 +30,7 @@ export default [
     },
     {
         title: 'Roblox Combat Sandbox',
-        url: 'https://github.com/sams-shahriar',
+        url: 'https://github.com/borohuz1',
         image: 'roblox-combat-sandbox.png',
         imageMini: 'roblox-combat-sandbox-mini.png',
         status: 'In development',
@@ -38,7 +38,7 @@ export default [
     },
     {
         title: 'CGI Ad Concepts',
-        url: 'https://github.com/sams-shahriar',
+        url: 'https://github.com/borohuz1',
         image: 'cgi-ad-concepts.png',
         imageMini: 'cgi-ad-concepts-mini.png',
         status: 'Sketching',
@@ -46,10 +46,11 @@ export default [
     },
     {
         title: 'Offline Voice AI',
-        url: 'https://github.com/sams-shahriar',
+        url: 'https://github.com/borohuz1',
         image: 'offline-voice-ai.png',
         imageMini: 'offline-voice-ai-mini.png',
         status: 'Working',
         description: 'Whisper.cpp transcription and Windows SAPI speech, running fully offline.'
     }
 ]
+

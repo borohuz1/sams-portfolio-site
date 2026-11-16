@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Projects shown in the workshop area (the screens you walk up to).
  *
  * Each entry needs:
@@ -16,7 +16,7 @@ export default [
     {
         title: 'Sentinel Siege',
         titleSmall: [ 'Sentinel', 'Siege' ],
-        url: 'https://github.com/sams-shahriar',
+        url: 'https://github.com/borohuz1',
         description: 'A local-first desktop agent that sees your screen, points at the exact control you need, and can drive the mouse and keyboard for you.',
         attributes:
         {
@@ -33,7 +33,7 @@ export default [
     {
         title: 'Shadows of Aetheria',
         titleSmall: [ 'Shadows', 'of Aetheria' ],
-        url: 'https://github.com/sams-shahriar',
+        url: 'https://github.com/borohuz1',
         description: 'A Roblox boss-fight combat slice: server-authoritative damage, a frame-exact 3-hit light attack combo and a full arena loop.',
         attributes:
         {
@@ -50,7 +50,7 @@ export default [
     {
         title: 'Void Fall',
         titleSmall: [ 'Void', 'Fall' ],
-        url: 'https://github.com/sams-shahriar',
+        url: 'https://github.com/borohuz1',
         description: 'The UI slice of a co-op extraction shooter: lobby, combat HUD, downed state, boss phases and post-match screens.',
         attributes:
         {
@@ -66,7 +66,7 @@ export default [
     {
         title: 'Business Desk',
         titleSmall: [ 'Business', 'Desk' ],
-        url: 'https://github.com/sams-shahriar',
+        url: 'https://github.com/borohuz1',
         description: 'An offline shop book for daily sales, orders, payments and customer credit. One HTML file, no install, data stays on your machine.',
         attributes:
         {
@@ -97,3 +97,4 @@ export default [
         ]
     }
 ]
+

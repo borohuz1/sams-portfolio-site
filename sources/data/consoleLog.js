@@ -22,3 +22,4 @@ ${site.zones.career.map((zone) => `    ${zone.title.padEnd(18)} => ${zone.subtit
 const style = 'color: #ffffff; font: 400 1em monospace;'
 
 export default [ `%c${text}`, style ]
+

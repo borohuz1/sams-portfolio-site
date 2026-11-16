@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Master content file for the portfolio.
  *
  * Everything a visitor reads (name, role, bio, zones, tools, contact details)
@@ -137,12 +137,12 @@ export default {
         ],
         address: 'Khilgaon, Dhaka 1219, Bangladesh',
         linkedin: 'https://linkedin.com/in/sams-shahriar',
-        github: 'https://github.com/sams-shahriar',
+        github: 'https://github.com/borohuz1',
         website: 'https://esolver.site'
     },
 
     /** Where this site will live once published */
-    siteUrl: 'https://borohuz1.github.io/sams-portfolio-site/',
+    siteUrl: 'https://sams-portfolio-site.pages.dev/',
 
     /**
      * Behind the scene panel.
@@ -200,3 +200,5 @@ export default {
         signOff: 'Sams'
     }
 }
+
+

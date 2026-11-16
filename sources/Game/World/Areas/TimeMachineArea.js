@@ -1,4 +1,4 @@
-import * as THREE from 'three/webgpu'
+﻿import * as THREE from 'three/webgpu'
 import { InteractivePoints } from '../../InteractivePoints.js'
 import { Area } from './Area.js'
 import { Fn, texture, uv, vec2, vec3, vec4 } from 'three/tsl'
@@ -24,7 +24,7 @@ export class TimeMachineArea extends Area
             InteractivePoints.STATE_CONCEALED,
             () =>
             {
-                window.open('https://borohuz1.github.io/sams-portfolio-site/')
+                window.open('https://sams-portfolio-site.pages.dev/')
             },
             () =>
             {
